@@ -22,7 +22,7 @@
     <div class="product-grid">
         {% for product in products %}
         <div class="product-card">
-            <div class="product-image" style="background-image: url('{{ product.image_url|default:"https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" }}');"></div>
+<div class="product-image" style="background-image: url('{% if product.image_url %}{{ product.image_url }}{% else %}https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80{% endif %}');"></div>
             <div class="product-info">
                 <h3 class="product-title">{{ product.name }}</h3>
                 <div class="product-price">€{{ product.price }}</div>
