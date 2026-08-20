@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Oliveduckling | Handmade Custom Creations{% endblock %}</title>
+    <style>
+        :root {
+            --primary: #4A6B5B;
+            --secondary: #F4A261;
+            --bg-light: #F9F9F7;
+            --text-dark: #2C3E35;
+            --white: #FFFFFF;
+            --gray: #E0E0E0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+
+        header { background-color: var(--white); border-bottom: 1px solid var(--gray); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-links { list-style: none; display: flex; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn { background-color: var(--secondary); color: var(--white); padding: 0.8rem 1.8rem; border: none; border-radius: 4px; font-size: 1rem; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.9; }
+        .btn-outline { background-color: transparent; border: 2px solid var(--white); color: var(--white); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+        .section-title { text-align: center; margin-bottom: 2.5rem; font-size: 2rem; color: var(--primary); }
+
+        footer { background-color: var(--text-dark); color: var(--white); text-align: center; padding: 2.5rem; margin-top: 4rem; }
+        footer p { font-size: 0.9rem; color: #aaa; }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="logo">🌿 Oliveduckling</a>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'shop' %}">Shop Collection</a></li>
+                <li><a href="{% url 'home' %}#services">What I Do</a></li>
+                <li><a href="{% url 'home' %}#custom-order">Custom Inquiry</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Oliveduckling. Handcrafted with love & precision.</p>
+    </footer>
+</body>
+</html>
