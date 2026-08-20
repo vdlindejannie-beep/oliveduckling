@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .shop-header { background-color: var(--primary); color: var(--white); text-align: center; padding: 3rem 2rem; margin-bottom: 3rem; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .product-card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.2s; }
+    .product-card:hover { transform: translateY(-5px); }
+    .product-image { height: 240px; background-color: var(--gray); background-size: cover; background-position: center; }
+    .product-info { padding: 1.5rem; }
+    .product-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .product-price { color: var(--primary); font-weight: bold; font-size: 1.15rem; margin-bottom: 1rem; }
+    .product-description { font-size: 0.95rem; color: #666; margin-bottom: 1.2rem; }
+</style>
+
+<div class="shop-header">
+    <h1>Ready-to-Order Collection</h1>
+    <p>Browse pre-designed custom creations available for immediate ordering.</p>
+</div>
+
+<div class="container" style="padding-top: 0;">
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+<div class="product-image" style="background-image: url('{% if product.image_url %}{{ product.image_url }}{% else %}https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80{% endif %}');"></div>
+            <div class="product-info">
+                <h3 class="product-title">{{ product.name }}</h3>
+                <div class="product-price">€{{ product.price }}</div>
+                <p class="product-description">{{ product.description }}</p>
+                <button class="btn" style="width: 100%; padding: 0.6rem;" onclick="alert('Item selected: {{ product.name }}')">Order Now</button>
+            </div>
+        </div>
+        {% empty %}
+        <p style="grid-column: 1/-1; text-align: center; font-size: 1.1rem; color: #777;">No products are currently listed in the shop. Check back soon!</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
