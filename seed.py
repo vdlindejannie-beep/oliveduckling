@@ -1,33 +1,45 @@
-from main.models import Product, Expense
+import os
+import django
 
-Product.objects.get_or_create(
-    name="Elegante 'Geboorte' Raamsticker",
-    price=24.95,
-    description="Custom vinyl window decal with delicate olive branch wreath and baby details."
-)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'oliveduckling.settings')
+django.setup()
 
-Product.objects.get_or_create(
-    name="'Geslaagd!' Wooden Garden Sign",
-    price=44.95,
-    description="Handcrafted lawn sign with custom vinyl text, designed to hold the flag and school bag."
-)
+from main.models import Product
 
-Product.objects.get_or_create(
-    name="Milestone Birthday Entrance Board",
-    price=39.95,
-    description="Arch-shaped sign for 21, 30, Sara/Abraham 50 celebrations."
-)
+def seed_database():
+    Product.objects.all().delete()
 
-Expense.objects.get_or_create(
-    title="Matte Sage Vinyl Roll (10m)",
-    cost=34.50,
-    category="Materials"
-)
+    products = [
+        {
+            "name": "Custom Quote Canvas Tote Bag",
+            "price": 14.99,
+            "description": "Durable eco-friendly cotton canvas tote bag customized with high-quality permanent vinyl designs.",
+            "image_url": "https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            "name": "Personalized Enamel Mug",
+            "price": 12.50,
+            "description": "Perfect for camping or cozy mornings. Custom names, quotes, or botanical designs available.",
+            "image_url": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            "name": "Custom Printed Graphic T-Shirt",
+            "price": 19.99,
+            "description": "Soft, comfortable cotton t-shirt featuring custom heat-transfer vinyl (HTV) graphics.",
+            "image_url": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            "name": "Handmade Wooden Event Sign",
+            "price": 34.99,
+            "description": "Custom vinyl lettering on natural finished wood for weddings, baby showers, or home entryway decor.",
+            "image_url": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80"
+        }
+    ]
 
-Expense.objects.get_or_create(
-    title="Wooden Garden Board Blank x5",
-    cost=62.00,
-    category="Materials"
-)
+    for item in products:
+        Product.objects.create(**item)
 
-print("Database seeded with Dutch celebration products and demo expenses successfully.")
+    print("Successfully seeded Hello Olive Design Studio products with matching images!")
+
+if __name__ == "__main__":
+    seed_database()

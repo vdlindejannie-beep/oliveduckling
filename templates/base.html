@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Oliveduckling | Handmade Custom Creations{% endblock %}</title>
+    <title>{% block title %}Hello Olive Design Studio | Handmade Custom Crafts{% endblock %}</title>
     <style>
         :root {
             --primary: #4A6B5B;
@@ -19,7 +19,7 @@
 
         header { background-color: var(--white); border-bottom: 1px solid var(--gray); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo { font-size: 1.4rem; font-weight: bold; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
         .nav-links { list-style: none; display: flex; gap: 2rem; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover { color: var(--primary); }
@@ -39,7 +39,7 @@
 <body>
     <header>
         <div class="nav-container">
-            <a href="{% url 'home' %}" class="logo">🌿 Oliveduckling</a>
+            <a href="{% url 'home' %}" class="logo">🌿 Hello Olive Design Studio</a>
             <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'shop' %}">Shop Collection</a></li>
@@ -54,7 +54,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Oliveduckling. Handcrafted with love & precision.</p>
+        <p>&copy; 2026 Hello Olive Design Studio. Handcrafted with love & precision.</p>
     </footer>
 </body>
 </html>
