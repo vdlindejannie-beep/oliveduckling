@@ -45,7 +45,7 @@ def seed_database():
     for item in products:
         Product.objects.create(**item)
 
-    print("Database succesvol gevuld met Hello Olive Design Studio producten!")
+    print("Shop database populated successfully!")
 
 if __name__ == "__main__":
     seed_database()
