@@ -22,36 +22,62 @@
 <!-- Hero Section -->
 <section class="hero">
     <h1>Hello Olive Design Studio</h1>
-    <p>Handcrafted custom goods, personalized apparel, and unique home decor lovingly made with Cricut precision.</p>
+    <p class="lang-nl">Handgemaakte op maat gemaakte artikelen, gepersonaliseerde kleding en unieke woondecoratie met Cricut-precisie.</p>
+    <p class="lang-en">Handcrafted custom goods, personalized apparel, and unique home decor lovingly made with Cricut precision.</p>
     <div class="hero-buttons">
-        <a href="{% url 'shop' %}" class="btn">Browse Shop</a>
-        <a href="#custom-order" class="btn btn-outline">Request Custom Order</a>
+        <a href="{% url 'shop' %}" class="btn">
+            <span class="lang-nl">Bekijk Collectie</span>
+            <span class="lang-en">Browse Shop</span>
+        </a>
+        <a href="#custom-order" class="btn btn-outline">
+            <span class="lang-nl">Maatwerk Aanvragen</span>
+            <span class="lang-en">Request Custom Order</span>
+        </a>
     </div>
 </section>
 
 <!-- Services Section -->
 <div class="container" id="services">
-    <h2 class="section-title">What I Can Do For You</h2>
+    <h2 class="section-title">
+        <span class="lang-nl">Wat Ik Voor Je Kan Maken</span>
+        <span class="lang-en">What I Can Do For You</span>
+    </h2>
     <div class="services-grid">
         <div class="service-card">
             <div class="service-icon">👕</div>
-            <h3>Custom Apparel</h3>
-            <p>T-shirts, hoodies, and tote bags customized with high-quality heat transfer vinyl (HTV) or sublimation designs.</p>
+            <h3>
+                <span class="lang-nl">Gepersonaliseerde Kleding</span>
+                <span class="lang-en">Custom Apparel</span>
+            </h3>
+            <p class="lang-nl">T-shirts, hoodies en linnen tassen voorzien van hoogwaardige flexfolie of sublimatie ontwerpen.</p>
+            <p class="lang-en">T-shirts, hoodies, and tote bags customized with high-quality vinyl or sublimation designs.</p>
         </div>
         <div class="service-card">
             <div class="service-icon">☕</div>
-            <h3>Personalized Drinkware</h3>
-            <p>Custom enamel mugs, tumblers, and glassware tailored for events, camping, or personal gifts.</p>
+            <h3>
+                <span class="lang-nl">Mokken & Drinkgerei</span>
+                <span class="lang-en">Personalized Drinkware</span>
+            </h3>
+            <p class="lang-nl">Geëmailleerde campingmokken, thermosbekers en glazen bedrukt met namen of botanische illustraties.</p>
+            <p class="lang-en">Custom enamel mugs, tumblers, and glassware tailored for events, camping, or personal gifts.</p>
         </div>
         <div class="service-card">
             <div class="service-icon">🎉</div>
-            <h3>Event Signage</h3>
-            <p>Welcome signs, seating charts, and custom acrylic/wooden lettering for weddings and celebrations.</p>
+            <h3>
+                <span class="lang-nl">Event & Feest Decoratie</span>
+                <span class="lang-en">Event Signage</span>
+            </h3>
+            <p class="lang-nl">Welkomstborden, taarttoppers en acrylaat belettering voor bruiloften, verjaardagen en babyshowers.</p>
+            <p class="lang-en">Welcome signs, seating charts, and custom acrylic/wooden lettering for celebrations.</p>
         </div>
         <div class="service-card">
             <div class="service-icon">🖼️</div>
-            <h3>Home Decor & Accents</h3>
-            <p>Custom shadow boxes, framed canvas prints, and bespoke gifts tailored to your style.</p>
+            <h3>
+                <span class="lang-nl">Woondecoratie & Cado's</span>
+                <span class="lang-en">Home Decor & Gifts</span>
+            </h3>
+            <p class="lang-nl">Gepersonaliseerde schilderijlijsten, naamborden en unieke cadeaus op maat gemaakt.</p>
+            <p class="lang-en">Custom shadow boxes, framed canvas prints, and bespoke gifts tailored to your style.</p>
         </div>
     </div>
 </div>
@@ -59,38 +85,60 @@
 <!-- About Section -->
 <div class="container" style="padding-top: 0;">
     <div class="about-box">
-        <h2 style="color: var(--primary); margin-bottom: 1rem;">About Hello Olive Design Studio</h2>
-        <p>Welcome! Every single item here is carefully designed, cut, and assembled by hand. Whether you are looking for personalized gifts, custom event signage, or branded pieces, I love bringing unique creative ideas to life.</p>
+        <h2 style="color: var(--primary); margin-bottom: 1rem;">
+            <span class="lang-nl">Over Hello Olive Design Studio</span>
+            <span class="lang-en">About Hello Olive Design Studio</span>
+        </h2>
+        <p class="lang-nl">Welkom! Elk item in de studio wordt zorgvuldig met de hand ontworpen, gesneden en afgewerkt. Of je nu op zoek bent naar een uniek persoonlijk cadeau of gepersonaliseerde decoratie voor een evenement, ik help je ideeën tot leven te brengen.</p>
+        <p class="lang-en">Welcome! Every single item here is carefully designed, cut, and assembled by hand. Whether you are looking for personalized gifts or custom event signage, I love bringing unique creative ideas to life.</p>
     </div>
 </div>
 
 <!-- Custom Order Inquiry Form -->
 <div class="container" id="custom-order" style="padding-top: 0;">
-    <h2 class="section-title">Request a Custom Order</h2>
+    <h2 class="section-title">
+        <span class="lang-nl">Vraag een Maatwerk Project Aan</span>
+        <span class="lang-en">Request a Custom Order</span>
+    </h2>
     <form class="inquiry-form" method="POST" action="{% url 'home' %}">
         {% csrf_token %}
         <div class="form-group">
-            <label for="name">Your Name</label>
+            <label for="name">
+                <span class="lang-nl">Jouw Naam</span>
+                <span class="lang-en">Your Name</span>
+            </label>
             <input type="text" id="name" name="name" required>
         </div>
         <div class="form-group">
-            <label for="email">Email Address</label>
+            <label for="email">
+                <span class="lang-nl">E-mailadres</span>
+                <span class="lang-en">Email Address</span>
+            </label>
             <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
-            <label for="category">Project Category</label>
+            <label for="category">
+                <span class="lang-nl">Categorie</span>
+                <span class="lang-en">Project Category</span>
+            </label>
             <select id="category" name="category">
-                <option value="apparel">Custom Apparel</option>
-                <option value="drinkware">Drinkware & Mugs</option>
-                <option value="event">Event Signage / Party</option>
-                <option value="other">Other Craft Project</option>
+                <option value="apparel">Kleding / Tassen (Apparel)</option>
+                <option value="drinkware">Mokken & Bekers (Drinkware)</option>
+                <option value="event">Event & Feest Decoratie</option>
+                <option value="other">Overig Maatwerk</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="details">Project Details & Ideas</label>
-            <textarea id="details" name="details" rows="4" placeholder="Describe what you would like crafted, quantities, colors, or deadlines..." required></textarea>
+            <label for="details">
+                <span class="lang-nl">Project Details & Wensen</span>
+                <span class="lang-en">Project Details & Ideas</span>
+            </label>
+            <textarea id="details" name="details" rows="4" placeholder="Beschrijf je ideeën, gewenste aantallen, kleuren of deadline..." required></textarea>
         </div>
-        <button type="submit" class="btn" style="width: 100%;">Send Inquiry</button>
+        <button type="submit" class="btn" style="width: 100%;">
+            <span class="lang-nl">Verstuur Aanvraag</span>
+            <span class="lang-en">Send Inquiry</span>
+        </button>
     </form>
 </div>
 {% endblock %}

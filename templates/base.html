@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Hello Olive Design Studio | Handmade Custom Crafts{% endblock %}</title>
+    <title>{% block title %}Hello Olive Design Studio | Handgemaakte Creaties{% endblock %}</title>
     <style>
         :root {
             --primary: #4A6B5B;
@@ -19,10 +19,25 @@
 
         header { background-color: var(--white); border-bottom: 1px solid var(--gray); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.4rem; font-weight: bold; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
-        .nav-links { list-style: none; display: flex; gap: 2rem; }
+        .logo { font-size: 1.3rem; font-weight: bold; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-links { list-style: none; display: flex; gap: 1.5rem; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover { color: var(--primary); }
+
+        .lang-switch {
+            background: #f0f0f0;
+            border: 1px solid var(--gray);
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
 
         .btn { background-color: var(--secondary); color: var(--white); padding: 0.8rem 1.8rem; border: none; border-radius: 4px; font-size: 1rem; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
@@ -33,6 +48,8 @@
 
         footer { background-color: var(--text-dark); color: var(--white); text-align: center; padding: 2.5rem; margin-top: 4rem; }
         footer p { font-size: 0.9rem; color: #aaa; }
+
+        .lang-en { display: none; }
     </style>
     {% block extra_head %}{% endblock %}
 </head>
@@ -40,12 +57,37 @@
     <header>
         <div class="nav-container">
             <a href="{% url 'home' %}" class="logo">🌿 Hello Olive Design Studio</a>
-            <ul class="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'shop' %}">Shop Collection</a></li>
-                <li><a href="{% url 'home' %}#services">What I Do</a></li>
-                <li><a href="{% url 'home' %}#custom-order">Custom Inquiry</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li>
+                        <a href="{% url 'home' %}">
+                            <span class="lang-nl">Home</span>
+                            <span class="lang-en">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'shop' %}">
+                            <span class="lang-nl">Winkel</span>
+                            <span class="lang-en">Shop</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}#services">
+                            <span class="lang-nl">Wat Ik Doe</span>
+                            <span class="lang-en">What I Do</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}#custom-order">
+                            <span class="lang-nl">Maatwerk</span>
+                            <span class="lang-en">Custom Orders</span>
+                        </a>
+                    </li>
+                </ul>
+                <button class="lang-switch" onclick="toggleLanguage()">
+                    🌐 <span id="lang-label">EN</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -54,7 +96,28 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Hello Olive Design Studio. Handcrafted with love & precision.</p>
+        <p>&copy; 2026 Hello Olive Design Studio. <span class="lang-nl">Met liefde en precisie handgemaakt.</span><span class="lang-en">Handcrafted with love & precision.</span></p>
     </footer>
+
+    <script>
+        let currentLang = 'nl';
+        function toggleLanguage() {
+            const nlElements = document.querySelectorAll('.lang-nl');
+            const enElements = document.querySelectorAll('.lang-en');
+            const label = document.getElementById('lang-label');
+
+            if (currentLang === 'nl') {
+                nlElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'inline-block');
+                label.textContent = 'NL';
+                currentLang = 'en';
+            } else {
+                nlElements.forEach(el => el.style.display = 'inline-block');
+                enElements.forEach(el => el.style.display = 'none');
+                label.textContent = 'EN';
+                currentLang = 'nl';
+            }
+        }
+    </script>
 </body>
 </html>
