@@ -40,10 +40,14 @@ def home_view(request):
     return render(request, "home.html")
 
 def shop_view(request):
-    # Automatically add default items if the shop table is empty
     if not Product.objects.exists():
         for item in DEFAULT_PRODUCTS:
-            Product.objects.create(**item)
+            Product.objects.create(
+                name=item["name"],
+                price=item["price"],
+                description=item["description"],
+                image_url=item["image_url"]
+            )
 
     products = Product.objects.all()
     return render(request, "shop.html", {"products": products})
