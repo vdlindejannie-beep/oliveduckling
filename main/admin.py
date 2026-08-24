@@ -3,7 +3,7 @@ from .models import Product, CustomOrder, Expense
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price')
+    list_display = ('name', 'price', 'description')
 
 @admin.register(CustomOrder)
 class CustomOrderAdmin(admin.ModelAdmin):
@@ -14,4 +14,5 @@ class CustomOrderAdmin(admin.ModelAdmin):
 @admin.register(Expense)
 class ExpenseAdmin(admin.ModelAdmin):
     list_display = ('title', 'cost', 'category', 'date')
-    list_filter = ('category', 'date')
+    list_filter = ('category',)
+    search_fields = ('title',)

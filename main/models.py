@@ -10,19 +10,22 @@ class Product(models.Model):
         return self.name
 
 class CustomOrder(models.Model):
-    name = models.CharField(max_length=100)
+    customer_name = models.CharField(max_length=100)
     email = models.EmailField()
     category = models.CharField(max_length=100)
     details = models.TextField()
+    status = models.CharField(max_length=50, default='Pending')
+    event_date = models.DateField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Order by {self.name}"
+        return f"Order by {self.customer_name}"
 
 class Expense(models.Model):
-    description = models.CharField(max_length=200)
-    amount = models.DecimalField(max_digits=8, decimal_places=2)
+    title = models.CharField(max_length=200)
+    cost = models.DecimalField(max_digits=8, decimal_places=2)
+    category = models.CharField(max_length=100, blank=True, null=True)
     date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.description} - €{self.amount}"
+        return f"{self.title} - €{self.cost}"
